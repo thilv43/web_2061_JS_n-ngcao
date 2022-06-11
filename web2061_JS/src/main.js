@@ -1,7 +1,11 @@
 import Navigo from "navigo";
 import HomePages from "./pages/HomePages";
-import ProductsPages from "./pages/ProductsPages";
 import ProductsDetail from "./pages/ProducsDetail";
+import AdminProducts from "./pages/admin/AdminProducts";
+import DetailProductAdmin from "./pages/admin/DetailProductAdmin";
+import EditProductAdmin from "./pages/admin/EditProductAdmin";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (pages, param) => {
@@ -9,14 +13,17 @@ const print = async (pages, param) => {
     if (app) {
         app.innerHTML = await pages.render(param);
     }
-    if (app) {
-        app.innerHTML = await pages.afterRender();
-    }
+    if(pages.afterRender) pages.afterRender()
 };
 router.on({
     "/": () => print(HomePages),
-    "/products": () => print(ProductsPages),
     "/products/:id": (param) => print(ProductsDetail, param),
+    "/signin": () => print(SignIn),
+    "/signup": () => print(SignUp),
+    "/admin": () => print(AdminProducts),
+    "/admin/products/:id": (param) => print(DetailProductAdmin, param),
+    "/admin/products/:id/edit": (param) => print(EditProductAdmin, param),
+
 });
 router.resolve();
 

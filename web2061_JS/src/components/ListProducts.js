@@ -68,22 +68,22 @@ const ListProducts = {
                     class="w-full p-4 hover:shadow-2xl transition-all mb-6"
                     >
                     <div>
-                        <img class="block w-full items-center" src="${item.image}" alt="" />
+                        <img class="block items-center w-[100%]" src="${item.images[0].base_url}" alt="" />
                     </div>
                     <div class="mt-3 px-4">
                         <h3
                         class="blocl text-[13px] capitalize text-[rgb(36, 36, 36)] font-normal"
                         >
-                        ${item.title}
+                        ${item.name}
                         </h3>
-                        <div class="text-yellow">
+                        <div class="text-[#ffb703]">
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         </div>
-                        <span class="text-[#EF233C] text-xl mt-3">${item.price} đ</span>
+                        <span class="text-[#EF233C] text-xl mt-3">${item.list_price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</span>
                     </div>
                     </div>
                 </a>
