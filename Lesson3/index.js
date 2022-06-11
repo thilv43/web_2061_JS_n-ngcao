@@ -84,7 +84,6 @@ const menu = [
 
 const menuElement = document.getElementById("menu");
 
-
     const render =  menu.map( (item) => { 
         return(/*html*/`
         <div class="menu-item">
@@ -102,7 +101,6 @@ const menuElement = document.getElementById("menu");
     </div>
     `)});
         menuElement.innerHTML = render.join("");
-        console.log(render());
 
 
 const Btns = document.querySelectorAll(".btn");
