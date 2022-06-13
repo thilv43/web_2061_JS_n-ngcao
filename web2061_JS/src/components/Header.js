@@ -39,7 +39,7 @@ const Header = {
                 <div>
                     <div>
                     <div>
-                    <a href="#" data-navigo>
+                    <a href="/signup" data-navigo>
                         <p class="text-[#fff] text-xs capitalize">
                         đăng nhập</p><p class="text-[#fff] text-xs capitalize">đăng ký</p>
                     </a>

@@ -6,6 +6,7 @@ import DetailProductAdmin from "./pages/admin/DetailProductAdmin";
 import EditProductAdmin from "./pages/admin/EditProductAdmin";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ListProducts from "./components/ListProducts";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (pages, param) => {
@@ -13,7 +14,7 @@ const print = async (pages, param) => {
     if (app) {
         app.innerHTML = await pages.render(param);
     }
-    if(pages.afterRender) pages.afterRender()
+    if(pages.afterRender) pages.afterRender(param); await ListProducts.afterRender()
 };
 router.on({
     "/": () => print(HomePages),

@@ -19,5 +19,8 @@ const EditProductAdmin = {
         </div>
         `;
     },
+    afterRender(){
+        
+    }
 };
 export default EditProductAdmin;

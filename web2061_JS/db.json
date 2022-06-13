@@ -4,6 +4,21 @@
       "email": "olivier@mail.com",
       "password": "$2a$10$v8U/FwZCgW6yBLeLURNn.uQA7CGgWUVuRP4LcnfvMXkW5VuGewuy6",
       "id": 1
+    },
+    {
+      "email": "thilvph18070@fpt.edu.vn",
+      "password": "$2a$10$U409gdAI30TcWxECrvTDB.fpZYuS27aujy6sS0CBcaMZ3o1mFGrT2",
+      "id": 2
+    },
+    {
+      "email": "thilvph18070@fpt.edu.vn",
+      "password": "$2a$10$oCM1kWv7K.T53U8fIGepcOUehISj3a1rb.wIm9MpeIEyE9wAHGSoq",
+      "id": 3
+    },
+    {
+      "email": "thilvph18070@fpt.edu.vn",
+      "password": "$2a$10$HgfCN6GMtuJmf94mhaHJl.UvmY4pB5AisShMUvZYzmbg.5LE.X3ti",
+      "id": 4
     }
   ],
   "books": [

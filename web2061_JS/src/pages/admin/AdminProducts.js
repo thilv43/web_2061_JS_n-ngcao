@@ -1,16 +1,16 @@
 import { apiGet } from "../../api";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+import Header from "../../components/Header";
 
 const AdminProducts = {
     async render() {
         const data = await apiGet("/books");
         console.log(data);
         return /* html */`
-        ${Navbar.render()}
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
+        ${Header.render()}
+        <div class="shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-center">
+                <thead class="text-xs text-white uppercase bg-blue-500">
                     <tr>
                         <th scope="col" class="px-6 py-3">STT</th>
                         <th scope="col" class="px-6 py-3">Products Name</th>
@@ -55,7 +55,7 @@ const AdminProducts = {
                         <a href="/admin/products/${book.id}/edit" > <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">UPDATE</button></a>
                         </td>
                         <td class="px-6 py-4 text-right">
-                        <a href="#" > <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">DELETE</button></a>
+                        <a href="#" > <button type="button" id="btn" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">DELETE</button></a>
                         </td>
                     </tr>
                     `).join("")};
@@ -65,6 +65,19 @@ const AdminProducts = {
             ${Footer.render()}
         `;
     },
+    afterRender(){
+        const btns = document.getElementById('#btn');
+        console.log('btns', btns);
+        for( let btn of btns){
+            const id = btn.dataset.id;
+            btn.addEventListener('click',async function() {
+                const confirm = window.confirm("Bạn có chắc chắn muốn xóa không");
+                if(confirm){
+                    const data = await remove(id)
+                }
+            })
+        }
+    }
 
 };
 

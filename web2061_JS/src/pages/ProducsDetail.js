@@ -1,5 +1,4 @@
 import { apiGet } from "../api";
-import AsideLeft from "../components/AsideLeft";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"
@@ -73,7 +72,7 @@ const Detail = {
                     <i class="fa-solid fa-minus cursor-pointer"></i>
                   </div>
                   <div class="cursor-pointer mt-5 w-full max-w-[350px] py-4 bg-red-button rounded-md hover:bg-opacity-90 mb-[20px]">
-                    <button class="text-[#fff] capitalize bg-red-600 border text-xl rounded-md p-4 w-80">chọn mua</button>
+                    <button class="text-[#fff] capitalize bg-red-600 border text-xl rounded-md p-4 w-80">Chọn mua</button>
                   </div>
                 </div>
               </div>

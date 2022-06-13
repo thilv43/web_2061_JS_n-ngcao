@@ -15,7 +15,7 @@ const Navbar = {
                     <li class="mr-4">
                     <a
                         class="capitalize text-white text-base hover:text-[#777] transition-all"
-                        href="/products"
+                        href="/"
                         data-navigo
                         >nhà sách</a
                     >
@@ -32,8 +32,8 @@ const Navbar = {
                     <a
                         class="capitalize text-white text-base hover:text-[#777] transition-all"
                         data-navigo
-                        href="/"
-                        >làm đẹp</a
+                        href="/admin"
+                        >admin</a
                     >
                     </li>
                 </ul>
