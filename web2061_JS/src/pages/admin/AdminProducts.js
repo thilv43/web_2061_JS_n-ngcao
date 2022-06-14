@@ -1,12 +1,13 @@
-import { apiGet } from "../../api";
+import { apiGet, apiDelete } from "../../api";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import {reRender} from "../../utils/reRender";
 
 const AdminProducts = {
     async render() {
         const data = await apiGet("/books");
         console.log(data);
-        return /* html */`
+        return `
         ${Header.render()}
         <div class="shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-center">
@@ -33,7 +34,7 @@ const AdminProducts = {
                         ${index + 1}
                         </th>
                         <td class="px-6 py-4">
-                        <a href="/admin/products/${book.id}" class="hover:text-blue-800" data-navigo>
+                        <a href="/products/${book.id}" class="hover:text-blue-800" data-navigo>
                         ${book.name}
                         </a>
                         </td>
@@ -41,7 +42,7 @@ const AdminProducts = {
                         ${book.list_price}
                         </td>
                         <td class="px-6 py-4 flex">
-                            ${book.images.map((items) => `
+                            ${book.images.map((items) => /*html*/`
                             <img src="${items.base_url}" alt="" width=10%>
                             `).join("")}
                         </td>
@@ -55,7 +56,7 @@ const AdminProducts = {
                         <a href="/admin/products/${book.id}/edit" > <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">UPDATE</button></a>
                         </td>
                         <td class="px-6 py-4 text-right">
-                        <a href="#" > <button type="button" id="btn" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">DELETE</button></a>
+                        <button type="button" id="btn" data-id=${book.id} class="btn btn-remove text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">DELETE</button>
                         </td>
                     </tr>
                     `).join("")};
@@ -64,20 +65,26 @@ const AdminProducts = {
         </div>
             ${Footer.render()}
         `;
+    
     },
+
     afterRender(){
-        const btns = document.getElementById('#btn');
-        console.log('btns', btns);
-        for( let btn of btns){
-            const id = btn.dataset.id;
-            btn.addEventListener('click',async function() {
-                const confirm = window.confirm("Bạn có chắc chắn muốn xóa không");
-                if(confirm){
-                    const data = await remove(id)
+        const BtnDelete = document.querySelectorAll('#btn');
+        BtnDelete.forEach((btns) => btns.addEventListener("click", async function(e) {
+            e.preventDefault();
+            const id = this.getAttribute("data-id");
+            const confirm = window.confirm("Bạn có chắc chắn muốn xóa không");
+            if(confirm){
+                const data = await ( await fetch(`http://localhost:3001/books/${id}`, {
+                        method: "DELETE",
+                    })).json();
+                reRender('app', AdminProducts)
+                if(data){
+                    alert("Delete thành công !!!")
                 }
-            })
-        }
-    }
+            }
+        }))
+    },
 
 };
 
