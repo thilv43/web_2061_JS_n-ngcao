@@ -70,7 +70,7 @@ const EditProductAdmin = {
         updateBtn.addEventListener('click', function() {
             newData.name = name.value;
             newData.original_price = original_price.value;
-            newData.authors.name = author.value;
+            newData.authors[0].name = author.value;
             newData.rating_average = rating_average.value;
             newData.categories.name = category.value;
             newData.short_description = short_description.value;
